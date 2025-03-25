@@ -7,10 +7,10 @@ class ImageProvider with ChangeNotifier {
       ImageRemoteDatasourceImpl();
 
   List<im.Image> _images = [];
+  List<im.Image> get images => _images;
   bool _isLoading = false;
   String? _error;
 
-  List<im.Image> get images => _images;
   bool get isLoading => _isLoading;
   String? get error => _error;
 

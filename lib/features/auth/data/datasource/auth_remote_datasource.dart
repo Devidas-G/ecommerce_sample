@@ -26,6 +26,7 @@ class AuthRemoteDatasourceImpl {
         if (userResponse.statusCode == 200) {
           final users = jsonDecode(userResponse.body) as List;
           if (users.isNotEmpty) {
+            print(users[0]);
             // Create a User object and include the token
             final user = User.fromJson(users[0]).copyWithToken(token);
             return user;

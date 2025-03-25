@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:provider/provider.dart';
 
-import '../../../utils/auth_provider.dart';
+import '../auth_provider.dart';
 import '../data/models/user.dart';
 
 class SignupPage extends StatefulWidget {
@@ -302,6 +302,7 @@ class _SignupPageState extends State<SignupPage> {
                         // Handle signup using the controllers
                         if (_formKey.currentState!.validate()) {
                           final user = User(
+                            id: 0,
                             fullName: _fullNameController.text,
                             phoneNumber: _phoneController.text,
                             email: _emailController.text,
@@ -325,7 +326,7 @@ class _SignupPageState extends State<SignupPage> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'Signup failed. Please check your credentials.',
+                                  'Api does not support user creation, use provided credentials',
                                 ),
                               ),
                             );

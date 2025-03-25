@@ -4,7 +4,8 @@ import 'package:provider/provider.dart';
 
 import 'features/auth/presentation/auth_router.dart';
 import 'features/homepage/presentation/homepage.dart';
-import 'utils/auth_provider.dart';
+import 'features/auth/auth_provider.dart';
+import 'utils/cart_provider.dart';
 import 'utils/image_provider.dart' as im;
 
 void main() {
@@ -21,13 +22,14 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => AuthProvider()..init()),
         ChangeNotifierProvider(create: (context) => ProductProvider()),
+        ChangeNotifierProvider(create: (context) => CartProvider()),
         ChangeNotifierProvider(create: (context) => im.ImageProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Ecommerce Kdigitalcurry',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         ),
         home: Wrapper(),
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../features/auth/data/datasource/auth_remote_datasource.dart';
-import '../features/auth/data/models/user.dart';
-import '../utils/preference_manager.dart';
+import 'data/datasource/auth_remote_datasource.dart';
+import 'data/models/user.dart';
+import '../../utils/preference_manager.dart';
 
 class AuthProvider with ChangeNotifier {
   final AuthRemoteDatasourceImpl _authRemoteDatasource =

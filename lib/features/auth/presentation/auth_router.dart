@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../utils/auth_provider.dart';
+import '../auth_provider.dart';
 import 'login_page.dart';
 import 'signup_page.dart';
 

@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce_kdigitalcurry/features/homepage/datasource/product_remote_datasource.dart';
+import 'package:ecommerce_kdigitalcurry/features/homepage/presentation/category_page.dart';
+import 'package:ecommerce_kdigitalcurry/views/cart_page.dart';
+import 'package:ecommerce_kdigitalcurry/views/product_details.dart';
+import 'package:ecommerce_kdigitalcurry/views/profile_page.dart';
+import 'package:ecommerce_kdigitalcurry/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../utils/auth_provider.dart';
 import '../../../utils/product_provider.dart';
-import '../models/product.dart';
 import 'widgets/widgets.dart';
 import '../../../utils/image_provider.dart' as im;
 
@@ -52,27 +54,122 @@ class HomePage extends StatelessWidget {
             .toList();
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {
-            // Handle menu button press (e.g., open drawer)
-          },
-        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.person),
             onPressed: () {
-              // Handle profile button press
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (context) => ProfilePage()));
             },
           ),
           IconButton(
             icon: const Icon(Icons.shopping_cart),
             onPressed: () {
-              // Handle cart button press
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (context) => CartPage()));
             },
           ),
         ],
       ),
+
+      drawer: Drawer(
+        width: double.infinity,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.zero, // Remove rounded corners
+        ),
+        child: Column(
+          children: [
+            AppBar(
+              automaticallyImplyLeading: false,
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context); // Close the drawer
+                },
+              ),
+              title: const Text('Category'),
+              centerTitle: true,
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.shopping_cart),
+                  onPressed: () {
+                    Navigator.of(
+                      context,
+                    ).push(MaterialPageRoute(builder: (context) => CartPage()));
+                  },
+                ),
+              ],
+            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  ListTile(
+                    title: const Text('Men'),
+                    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder:
+                              (context) => CategoryPage(
+                                CategoryName: "Men",
+                                Categories: {
+                                  'Clothing': [
+                                    'T-Shirt',
+                                    'Shirt',
+                                    'Jeans',
+                                    'Jacket',
+                                  ],
+                                  'Footwear': [
+                                    'Sneakers',
+                                    'Formal Shoes',
+                                    'Sandals',
+                                  ],
+                                  'Accessories': [
+                                    'Watches',
+                                    'Bags',
+                                    'Belts',
+                                    'Luxury Watches',
+                                  ],
+                                },
+                              ),
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Women'),
+                    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                    onTap: () {
+                      // Navigate to Women's category page
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Electronics'),
+                    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                    onTap: () {
+                      // Navigate to Electronics category page
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Jewelry'),
+                    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                    onTap: () {
+                      // Navigate to Jewelry category page
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+
       body:
           productProvider.isLoading
               ? const Center(child: CircularProgressIndicator())
@@ -328,8 +425,39 @@ class HomePage extends StatelessWidget {
                               children:
                                   mensClothing
                                       .map(
-                                        (product) =>
-                                            BuildProductCard(product, context),
+                                        (product) => Row(
+                                          children: [
+                                            SizedBox(
+                                              width: 150,
+                                              height: 320,
+                                              child: ProductCard(
+                                                imageUrl: product.image,
+                                                name: product.title,
+                                                description:
+                                                    product.description,
+                                                price: product.price,
+                                                originalPrice:
+                                                    product.price * 1.3,
+                                                discountPercentage: 30,
+                                                onFavoriteToggle: () {},
+                                                onTap: () {
+                                                  Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                      builder:
+                                                          (context) =>
+                                                              ProductDetails(
+                                                                product:
+                                                                    product,
+                                                              ),
+                                                    ),
+                                                  );
+                                                },
+                                                isFavorited: false,
+                                              ),
+                                            ),
+                                            SizedBox(width: 10),
+                                          ],
+                                        ),
                                       )
                                       .toList(),
                             ),
@@ -358,8 +486,39 @@ class HomePage extends StatelessWidget {
                               children:
                                   womensClothing
                                       .map(
-                                        (product) =>
-                                            BuildProductCard(product, context),
+                                        (product) => Row(
+                                          children: [
+                                            SizedBox(
+                                              width: 150,
+                                              height: 320,
+                                              child: ProductCard(
+                                                imageUrl: product.image,
+                                                name: product.title,
+                                                description:
+                                                    product.description,
+                                                price: product.price,
+                                                originalPrice:
+                                                    product.price * 1.3,
+                                                discountPercentage: 30,
+                                                onFavoriteToggle: () {},
+                                                onTap: () {
+                                                  Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                      builder:
+                                                          (context) =>
+                                                              ProductDetails(
+                                                                product:
+                                                                    product,
+                                                              ),
+                                                    ),
+                                                  );
+                                                },
+                                                isFavorited: false,
+                                              ),
+                                            ),
+                                            SizedBox(width: 10),
+                                          ],
+                                        ),
                                       )
                                       .toList(),
                             ),

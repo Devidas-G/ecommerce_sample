@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:ecommerce_kdigitalcurry/features/homepage/datasource/product_remote_datasource.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-import '../features/homepage/models/product.dart';
+import 'models/cart.dart';
+import 'models/product.dart';
 
 class ProductProvider with ChangeNotifier {
   final ProductRemoteDatasourceImpl _productRemoteDatasource =
