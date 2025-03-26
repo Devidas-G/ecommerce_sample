@@ -27,8 +27,13 @@ class AuthRemoteDatasourceImpl {
           final users = jsonDecode(userResponse.body) as List;
           if (users.isNotEmpty) {
             print(users[0]);
+            // Find the user with the matching username
+            final myuser = users.firstWhere(
+              (user) => user['username'] == username,
+              orElse: () => null, // Return null if no user is found
+            );
             // Create a User object and include the token
-            final user = User.fromJson(users[0]).copyWithToken(token);
+            final user = User.fromJson(myuser).copyWithToken(token);
             return user;
           } else {
             throw Exception('User not found for username: $username');

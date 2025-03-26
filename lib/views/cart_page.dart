@@ -20,10 +20,7 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {}),
-        title: Text("Back"),
-      ),
+      appBar: AppBar(title: Text("Back")),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

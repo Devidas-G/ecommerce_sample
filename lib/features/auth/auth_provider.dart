@@ -71,6 +71,7 @@ class AuthProvider with ChangeNotifier {
   Future<bool> login(String username, String password) async {
     try {
       final user = await _authRemoteDatasource.login(username, password);
+      print(user.toJson());
       await _saveAuthData(user);
       return true;
     } catch (e) {
