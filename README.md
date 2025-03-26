@@ -1,16 +1,34 @@
 # ecommerce_kdigitalcurry
 
-A new Flutter project.
+Welcome to the E-Commerce App, a fully functional mobile application built with Flutter and powered by the FakeStoreAPI. This app demonstrates a simple yet effective e-commerce experience, allowing users to browse products, view details, and simulate a shopping experience.
 
-## Getting Started
+Features
+ - Product Listing: Browse a catalog of products fetched from the FakeStoreAPI.
+ - Product Details: View detailed information about each product, including images, prices, and descriptions.
+ - Cart Functionality:Load cart and manage your selections (simulated, as FakeStoreAPI doesn’t persist data).
+ - Responsive UI: Built with Flutter for a smooth cross-platform experience (Android & iOS).
+ - API Integration: Real-time data fetching from FakeStoreAPI.
 
-This project is a starting point for a Flutter application.
+Prerequisites
+Before running the app, ensure you have the following installed:
 
-A few resources to get you started if this is your first Flutter project:
+ - Flutter SDK (latest stable version recommended)
+ - Dart (comes with Flutter)
+ - An IDE like Android Studio or VS Code
+ - An emulator or physical device for testing
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+API Details
+This app uses the FakeStoreAPI, a free REST API that provides mock e-commerce data. It includes endpoints for products, categories, carts, and users.
+
+Limitations of FakeStoreAPI
+Since this app relies on FakeStoreAPI, there are some limitations to be aware of:
+
+ - Static Data: The API provides a fixed set of products and does not allow adding, updating, or deleting items.
+ - No Persistence: Cart and user data are not saved on the server.
+ - Limited Endpoints: Features like order processing or payment integration are not supported by the API.
+ - Rate Limits: The API is free and public, so heavy usage might result in rate-limiting or downtime.
+
+Acknowledgments
+Thanks to FakeStoreAPI for providing a free and easy-to-use API for testing.
+Built with love using Flutter.
