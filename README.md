@@ -1,4 +1,4 @@
-# ecommerce_kdigitalcurry
+# ecommerce
 
 Welcome to the E-Commerce App, a fully functional mobile application built with Flutter and powered by the FakeStoreAPI. This app demonstrates a simple yet effective e-commerce experience, allowing users to browse products, view details, and simulate a shopping experience.
 
